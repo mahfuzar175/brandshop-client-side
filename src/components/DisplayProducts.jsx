@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const DisplayProducts = ({ data }) => {
-  const { name, photo, brand_name, type, price, short_description, ratings } =
+  const { _id, name, photo, brand_name, type, price, short_description, ratings } =
     data;
 
   return (
@@ -19,8 +21,8 @@ const DisplayProducts = ({ data }) => {
           <p className="text-lg font-extrabold">Price: {price} Tk</p>
             <p>{short_description}</p>
           <div className="card-actions justify-start">
-            <button className="btn badge-outline">Details</button>
-            <button className="btn badge-outline">Update</button>
+            <Link to={`/details/${_id}`}><button className="btn badge-outline">Details</button></Link>
+            <Link to={`/update/${_id}`}><button className="btn badge-outline">Update</button></Link>
           </div>
         </div>
       </div>
