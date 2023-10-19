@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import userDefaultPic from '../assets/user.png'
 import logo from '../assets/Screenshot 2023-10-18 115456.jpg'
+import { AuthContext } from '../Providers/AuthProvider';
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const [loggingOut, setLoggingOut] = useState(false);
+  const userName = user ? user.displayName : "";
+  const userProfilePic = user ? user.photoURL : userDefaultPic;
+
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        console.log("User signed out successfully");
+      })
+      .catch((error) => {
+        console.error("Error signing out: ", error.message);
+      })
+      .finally(() => {
+        setLoggingOut(false);
+      });
+  };
 
   const navLinks = (
     <>
@@ -40,6 +58,7 @@ const Navbar = () => {
     </>
   );
   <br />;
+  
   return (
     <div className="navbar bg-base-100 p-6 ">
       <div className="navbar-start">
@@ -77,15 +96,25 @@ const Navbar = () => {
       <div className="navbar-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <img src={userDefaultPic} alt='' />
+            <img src={userProfilePic} alt={`${userName}'s profile`} />
           </div>
         </label>
         <span className="hidden md:inline-block font-semibold ml-1 mr-1">
+          {userName}
         </span>
+        {user ? (
+          <button
+            onClick={handleSignOut}
+            className={`btn btn-ghost ${loggingOut ? "loading" : ""}`}
+            disabled={loggingOut}
+          >
+            Sign Out
+          </button>
+        ) : (
           <Link to="/login">
             <button className="btn btn-ghost">Login</button>
           </Link>
-
+        )}
       </div>
     </div>
   );

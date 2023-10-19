@@ -18,6 +18,7 @@ const AddProduct = () => {
         const newProduct = { name, brand_name, type, short_description, ratings, price, photo };
         console.log(newProduct);
 
+
         // send data to the server
         fetch('http://localhost:5000/product', {
             method: 'POST',
@@ -36,6 +37,8 @@ const AddProduct = () => {
                 icon: 'success',
                 confirmButtonText: 'Ok'
               })
+
+              form.reset();
            }
         })
 

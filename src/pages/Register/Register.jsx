@@ -1,9 +1,16 @@
 
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
 
-  const handleRegister = (e) => {
+  const {createUser} =  useContext(AuthContext);
+
+  const handleRegister = async (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const name = form.get("name");
@@ -11,12 +18,48 @@ const Register = () => {
     const email = form.get("email");
     const password = form.get("password");
     console.log(name, email, photo, password);
+    
+    // Check password criteria
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{6,})/;
+  if (!passwordRegex.test(password)) {
+    toast.error("Password must be at least 6 characters long, contain a capital letter, and a special character.", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    return; // Stop execution if password doesn't meet criteria
+  }
 
-    }
+  try{
+    // create user
+    const result = await createUser(email, password)
+    console.log(result.user);
+
+    // update profile
+    updateProfile(result.user, {
+      displayName: name,
+      photoURL: photo
+    } )
+
+    
+    .then(() => console.log('profile updated'))
+    .catch((err) => {
+      console.log(err);
+    });
+
+    toast.success("Registration successful!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  } catch (error) {
+    console.error(error);
+    toast.error("Registration failed. Please try again later.", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+};
 
 
   return (
     <div>
+      <ToastContainer />
       <div className="mb-8 p-4">
         <h1 className="text-5xl font-bold text-center">Register now!</h1>
         <form

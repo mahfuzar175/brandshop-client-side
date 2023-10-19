@@ -22,7 +22,7 @@ const Update = () => {
         console.log(updatedProduct);
 
         // send data to the server
-        fetch(`http://localhost:5000/product/${_id}`, {
+        fetch(`http://localhost:5000/products/${_id}`, {
             method: 'PUT',
             headers: {
               'content-type': 'application/json'
@@ -32,7 +32,7 @@ const Update = () => {
         .then(res => res.json())
         .then(data =>{
            console.log(data);
-           if(data.insertedId){
+           if(data.modifiedCount > 0){
             Swal.fire({
                 title: 'Success!',
                 text: 'Product Updated Successfully',

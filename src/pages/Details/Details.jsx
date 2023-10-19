@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 const Details = () => {
   const data = useLoaderData();
   const {name, photo, brand_name, price} = data;
@@ -15,7 +15,7 @@ const Details = () => {
         <div className="card-body items-center text-center">
           <h2 className="card-title">{brand_name}/{name}</h2>
           <p className="text-lg font-extrabold">Price: {price} Tk</p>
-          <button className="btn btn-primary w-full">🛒 Add to Cart</button>
+          <Link to='/myCart'><button className="btn btn-primary w-full">🛒 Add to Cart</button></Link>
         </div>
       </div>
     </div>
