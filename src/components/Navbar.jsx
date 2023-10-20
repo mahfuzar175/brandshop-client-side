@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react';
+import { BsMoonFill, BsSun } from "react-icons/bs";
 import { Link, NavLink } from 'react-router-dom';
 import userDefaultPic from '../assets/user.png'
 import logo from '../assets/Screenshot 2023-10-18 115456.jpg'
 import { AuthContext } from '../Providers/AuthProvider';
+import { useTheme } from '../Providers/ThemeProvider';
 
 const Navbar = () => {
+  const {darkMode, toggleTheme} = useTheme();
+
   const { user, logOut } = useContext(AuthContext);
   const [loggingOut, setLoggingOut] = useState(false);
   const userName = user ? user.displayName : "";
@@ -58,6 +62,7 @@ const Navbar = () => {
     </>
   );
   <br />;
+
   
   return (
     <div className="navbar bg-base-100 p-5 ">
@@ -94,13 +99,12 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-      <button className='btn mr-1 text-xs'>Mode</button>
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
             <img src={userProfilePic} alt={`${userName}'s profile`} />
           </div>
         </label>
-        <span className="hidden md:inline-block text-sm font-semibold ml-1 mr-1">
+        <span className="hidden md:inline-block text-sm font-semibold ml-1 mr-2">
           {userName}
         </span>
         {user ? (
@@ -116,6 +120,9 @@ const Navbar = () => {
             <button className="btn btn-ghost">Login</button>
           </Link>
         )}
+        <a className='p-5 text-lg rounded' onClick={toggleTheme}>
+        {darkMode ? <BsSun></BsSun> : <BsMoonFill></BsMoonFill>}
+      </a>
       </div>
     </div>
   );

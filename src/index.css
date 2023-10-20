@@ -2,17 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* styles for light theme */
-.light-theme {
-    background-color: #ffffff;
-    color: #000000;
-  }
-  
-  /* styles for dark theme */
-  .dark-theme {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    
-    
-  }
-  
+/* styles.css */
+
+/* Default light mode styles */
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark mode styles using CSS variables */
+body.dark-theme {
+  --bg-color: #333333;
+  --text-color: #ffffff;
+}
+
+body.dark-theme {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Add specific dark mode styles for components */
+.dark-theme .navbar {
+  background-color: #222222;
+  color: #ffffff;
+}
+
+.dark-theme .btn {
+  background-color: #444444;
+  color: #ffffff;
+}
+
+/* Add more styles as needed for other components */

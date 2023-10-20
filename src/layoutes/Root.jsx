@@ -1,16 +1,20 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { ThemeProvider } from "../Providers/ThemeProvider";
 
 const Root = () => {
   return (
-    <div>
-      <div className="w-full mx-auto font-semibold">
-        <Navbar></Navbar>
+    <ThemeProvider>
+      <div>
+        <div className="w-full mx-auto font-semibold">
+          <Navbar />
+        </div>
+        <Outlet />
+        <Footer />
       </div>
-      <Outlet></Outlet>
-      <Footer></Footer>
-    </div>
+    </ThemeProvider>
   );
 };
 
