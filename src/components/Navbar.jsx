@@ -60,7 +60,7 @@ const Navbar = () => {
   <br />;
   
   return (
-    <div className="navbar bg-base-100 p-6 ">
+    <div className="navbar bg-base-100 p-5 ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -94,12 +94,13 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
+      <button className='btn mr-1 text-xs'>Mode</button>
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
             <img src={userProfilePic} alt={`${userName}'s profile`} />
           </div>
         </label>
-        <span className="hidden md:inline-block font-semibold ml-1 mr-1">
+        <span className="hidden md:inline-block text-sm font-semibold ml-1 mr-1">
           {userName}
         </span>
         {user ? (

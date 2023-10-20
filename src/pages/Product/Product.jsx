@@ -73,9 +73,15 @@ const Product = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredProducts?.map((item, index) => (
-          <DisplayProducts key={index} data={item}></DisplayProducts>
-        ))}
+        {filteredProducts.length === 0 ? (
+          <div className="text-center text-lg font-bold text-gray-500">
+            No products available for this brand.
+          </div>
+        ) : (
+          filteredProducts.map((item, index) => (
+            <DisplayProducts key={index} data={item}></DisplayProducts>
+          ))
+        )}
       </div>
     </div>
   );

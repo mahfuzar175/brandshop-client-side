@@ -48,6 +48,7 @@ const Register = () => {
     toast.success("Registration successful!", {
       position: toast.POSITION.TOP_CENTER,
     });
+    
   } catch (error) {
     console.error(error);
     toast.error("Registration failed. Please try again later.", {
@@ -60,7 +61,7 @@ const Register = () => {
   return (
     <div>
       <ToastContainer />
-      <div className="mb-8 p-4">
+      <div className="mb-8 p-2">
         <h1 className="text-5xl font-bold text-center">Register now!</h1>
         <form
           onSubmit={handleRegister}

@@ -27,11 +27,9 @@ const Banner = () => {
             data-aos-duration="500"
           >
             {" "}
-            <Link to="/contactUs">
               <button className="btn btn-secondary normal-case text-lg font-bold">
                Buy Now!!!
               </button>
-            </Link>
           </div>
         </div>
       </div>
