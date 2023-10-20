@@ -43,22 +43,22 @@ const router = createBrowserRouter([
             {
                 path: '/product/:brand_name',
                 element: <Product></Product>,
-                loader: () => fetch('https://b8a10-brandshop-server-side-mahfuzar175-aye104963.vercel.app/products')
+                loader: () => fetch('https://b8a10-brandshop-server-side-mahfuzar175-nsibg0z85.vercel.app/products')
             },
             {
                 path: '/details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://b8a10-brandshop-server-side-mahfuzar175-aye104963.vercel.app/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://b8a10-brandshop-server-side-mahfuzar175-nsibg0z85.vercel.app/products/${params.id}`)
             },
             {
                 path: '/update/:id',
                 element: <PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://b8a10-brandshop-server-side-mahfuzar175-aye104963.vercel.app/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://b8a10-brandshop-server-side-mahfuzar175-nsibg0z85.vercel.app/products/${params.id}`)
             },
             {
                 path: '/myCart',
                 element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-                loader: () => fetch('https://b8a10-brandshop-server-side-mahfuzar175-aye104963.vercel.app/cart')
+                loader: () => fetch('https://b8a10-brandshop-server-side-mahfuzar175-nsibg0z85.vercel.app/cart')
             },
             {
                 path: '/login',

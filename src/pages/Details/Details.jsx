@@ -6,7 +6,7 @@ const Details = () => {
 
   const addToCartItems = {name, photo, brand_name, price};
   const handleAddToCart = () =>{
-    fetch('https://b8a10-brandshop-server-side-mahfuzar175-aye104963.vercel.app/cart', {
+    fetch('https://b8a10-brandshop-server-side-mahfuzar175-nsibg0z85.vercel.app/cart', {
       method: 'POST',
       headers: {
         'content-type' : 'application/json'
