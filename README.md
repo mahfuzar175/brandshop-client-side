@@ -1,8 +1,8 @@
 # Foodily Website
 
-## [Live Link](https://event-management-15d0e.web.app/)
+## [Live Link](https://foodily-website.web.app/)
 
-Click here for the live link: [https://event-management-15d0e.web.app/](https://event-management-15d0e.web.app/)
+Click here for the live link: [https://foodily-website.web.app/](https://foodily-website.web.app/)
 
 
 Foodily is a user-friendly e-commerce platform that allows users to explore a variety of food products, manage their shopping cart, and enjoy a seamless shopping experience. This repository contains the codebase for the Foodily website.
